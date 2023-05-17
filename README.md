@@ -9,29 +9,35 @@ nvidia-gpu-optimized-vmi-a10
 
 ## SSH to VM
 
-sudo apt update
+    sudo apt update
 
-sudo apt upgrade
+    sudo apt upgrade
 
-conda create --name md --python=3.9.16
+    conda create --name md --python=3.9.16
 
-conda activate md
+    conda activate md
 
-git clone https://github.com/larry-wps/megadetector-fastapi.git
-cd megadetector-fastapi
+    git clone https://github.com/larry-wps/megadetector-fastapi.git
 
-pip install -r requirements/requirements-dev.txt
+    cd megadetector-fastapi
+
+    pip install -r requirements/requirements-dev.txt
 
 **To run just the API:**
-cd api
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+    cd api
+    
+    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 **To run just the UI**
-cd ../ui/
-streamlit run app.py
+
+    cd ../ui/
+    
+    streamlit run app.py
 
 **To run both**
-start.sh
+
+    start.sh
 
 
 **Note**: Streamlit reads the FastAPI server location from an environment variable `MEGADETECTOR_API_URL` and defaults to `http://127.0.0.1:8000/` if it is missing. If the server port is different, you can directly update it in the `config.py` file or put it in a `.env` file (like this `MEGADETECTOR_API_URL='http://127.0.0.1:8000'`) which might be preferrable if the URL is public and shouldn't be on git.
