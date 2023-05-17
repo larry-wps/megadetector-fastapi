@@ -68,6 +68,12 @@ if importlib.util.find_spec("torch") is not None:
                 "typical_detection_threshold": 0.2,
                 "conservative_detection_threshold": 0.05,
             },
+            "ona-v0.0.1": {
+                "megadetector_version": "v0.0.1",
+                "source_url": "https://github.com/larry-wps/megadetector-fastapi/ona/test.pt",
+                "typical_detection_threshold": 0.2,
+                "conservative_detection_threshold": 0.05,
+            },
         }
     )
 
@@ -78,18 +84,6 @@ if importlib.util.find_spec("tensorflow") is not None:
             "v4.1.0": {
                 "megadetector_version": "v4.1.0",
                 "source_url": "https://lilablobssc.blob.core.windows.net/models/camera_traps/megadetector/md_v4.1.0/md_v4.1.0.pb",
-                "typical_detection_threshold": 0.8,
-                "conservative_detection_threshold": 0.3,
-            },
-            "v3.0.0": {
-                "megadetector_version": "v3.0.0",
-                "source_url": "https://lilablobssc.blob.core.windows.net/models/camera_traps/megadetector/megadetector_v3.pb",
-                "typical_detection_threshold": 0.8,
-                "conservative_detection_threshold": 0.3,
-            },
-            "v2.0.0": {
-                "megadetector_version": "v2.0.0",
-                "source_url": "https://lilablobssc.blob.core.windows.net/models/camera_traps/megadetector/megadetector_v2.pb",
                 "typical_detection_threshold": 0.8,
                 "conservative_detection_threshold": 0.3,
             },
