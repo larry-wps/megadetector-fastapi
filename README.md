@@ -39,12 +39,11 @@ nvidia-gpu-optimized-vmi-a10
 
     start.sh
 
-
 **Note**: Streamlit reads the FastAPI server location from an environment variable `MEGADETECTOR_API_URL` and defaults to `http://127.0.0.1:8000/` if it is missing. If the server port is different, you can directly update it in the `config.py` file or put it in a `.env` file (like this `MEGADETECTOR_API_URL='http://127.0.0.1:8000'`) which might be preferrable if the URL is public and shouldn't be on git.
 
-## Docker stuff
+## Docker
 
-There is a docker template to containerize the application and deploy it. Currently, the configuration is tailored to create containers that run on CPUs. This is primarily for Cloud based APIs, specifically, Google Cloud Run (soon to be tested).
+There is a docker template to containerize the application and deploy it. This is primarily for Cloud based APIs, specifically, Google Cloud Run
 
 Deployment strategies like Google Cloud Run spin up instances on demand. In this setting, instead of downloading the MegaDetector model everytime,  it might be useful to create images with the MegaDetector models baked in the container images. However, to keep them light, it is best to only have a specific model in addition to its required dependencies installed (PyTorch & Tensorflow).
 
