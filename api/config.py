@@ -70,7 +70,7 @@ if importlib.util.find_spec("torch") is not None:
             },
             "ona-v0.0.1": {
                 "megadetector_version": "v0.0.1",
-                "source_url": "https://github.com/larry-wps/megadetector-fastapi/ona/test.pt",
+                "source_url": "https://wpswatchprod.blob.core.windows.net/ai-training/bh_10epoch.pt",
                 "typical_detection_threshold": 0.2,
                 "conservative_detection_threshold": 0.05,
             },
