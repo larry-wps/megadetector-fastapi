@@ -64,7 +64,7 @@ if importlib.util.find_spec("torch") is not None:
             },
             "v5b.0.0": {
                 "megadetector_version": "v5b.0.0",
-                "source_url": "https://github.com/microsoft/CameraTraps/releases/download/v5.0/md_v5b.0.0.pt",
+                "source_url": "https://wpswatchprod.blob.core.windows.net/ai-training/bh_50_yolo5l.pt",
                 "typical_detection_threshold": 0.2,
                 "conservative_detection_threshold": 0.05,
             },
