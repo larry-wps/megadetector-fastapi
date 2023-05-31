@@ -1,6 +1,8 @@
 import asyncio
 import logging
 import time
+import torch
+import torchvision
 from typing import Optional
 
 from config import DETECTOR_METADATA
@@ -64,6 +66,36 @@ async def get_annotated_image(request: AnnotateRequest):
         "detection_threshold": detection_threshold,
         "annotation_time": annotation_time,
     }
+
+
+@app.post("/annotateona/")
+async def get_annotated_image(request: AnnotateRequest):
+    """Main function that consumes an image list object and returns a list of Megadetector annotations"""
+    # Load the megadetector model. To keep the memory footprint low, keep only one model at any time
+    # For dev purposes, we can load multiple models in memory
+    start = time.perf_counter()
+    image, model = await asyncio.gather(
+        load_image(request.image),
+        torch.hub.load('ultralytics/yolov5', 'custom', path='https://wpswatchprod.blob.core.windows.net/ai-training/bh_50_yolo5l.pt'),
+    )
+
+    # Set the detection threshold if provided
+    if request.detection_threshold is None:
+        detection_threshold = model.detection_threshold
+    else:
+        detection_threshold = request.detection_threshold
+
+    result = model(image)
+    
+    annotation_time = time.perf_counter() - start
+
+    return {
+        "annotation": result.print(),
+        "megadetector_version": request.megadetector_version,
+        "detection_threshold": detection_threshold,
+        "annotation_time": annotation_time,
+    }
+
 
 
 @app.get("/available_models/")
